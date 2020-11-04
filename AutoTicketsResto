@@ -1,0 +1,28 @@
+print("Combien de tickets restau avez vous ?");
+tr = int(input());
+print("Quelle est la valeur de chaque ticket ?");
+v = float(input());
+
+print("Quelle est la somme totale à payer");
+st = float(input());
+print("Y a-t-il une réduction ? oui/non")
+pc = input()
+
+if pc == "oui":
+  print("De combien est la réduction?")
+  pcv = int(input())
+  st = st-(st*(pcv/100))
+  print("Avec la réduction de" , pcv , "%, le prix du repas est de" , st , "euros")
+
+
+nm = st//v
+print("Combien de tickets souhaitez vous utiliser ? Attention, si vous utilisez plus de" , nm , "tickets restau, vous perdez de l'argent")
+nb = int(input());
+
+nbt = nb*v;
+print("Vous réglez" , nbt , "euros en tickets restau")
+nt = st-nbt;
+print("Si vous utilisez" , nb , "tickets de" , v , "euros, il vous reste à payer" , round(nt,2) , "euros en espèces.");
+
+if nt < 0:
+  print("Vous perdez" , nt , "euros sur la transaction, essayez avec moins de tickets si vous souhaitez ne pas perdre d'argent sur le rendu de monnaie")
