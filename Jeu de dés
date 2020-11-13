@@ -2,7 +2,15 @@ from random import *                                                            
 
 def desix():                                                                              # On crée la fonction desix() qui fera un lancer de dé à chaque invocation, 
   a = randint(1,6)
-  return a                                                                                # Cette valeur sera stockée dans la variable "a", qu'on réassignera à chaque lancer validé
+  return a    
+  
+def rejouer():                                                                            # On crée la fonction rejouer() permettant de rejouer en cas de victoire ou défaite
+  print("Souhaitez vous rejouer ? oui / non")
+  rej = str(input())
+  if rej == "oui":
+    jeu()
+  elif rej == "non":
+    print("A plus tard !")                                                                # Cette valeur sera stockée dans la variable "a", qu'on réassignera à chaque lancer validé
 
 def jeu():                                                                                # On crée la fonction jeu qui sera sera notre fonction finale
   d1 = desix()                                                                            # 1er lancer de dé, il est automatiquement validé
@@ -21,6 +29,7 @@ def jeu():                                                                      
     rep = str(input())
   if vie == 0 and d2 != d1:
     print("Il n'y a plus d'essais disponibles pour ce dé, GAME OVER")                     # Si les 3 essais sont épuisés et que la valeur des dés ne sont pas égales, c'est GAME OVER,
+    rejouer()                     
   if rep == "oui" and d1 == d2:                                                           # à l'inverse, si le second dé est validé et verifié par le programme comme étant vrai...
     d3 = desix()                                                                          # ... on peut lancer le 3ème dé
     vie = 3
@@ -35,15 +44,17 @@ def jeu():                                                                      
       rep = str(input())
       if vie == 0 and d3 != d2:
        print("Il n'y a plus d'essais disponibles pour ce dé, GAME OVER")
-      elif vie == 0 and d3 == d2:                                                         # Première condition de victoire : dans le cas ou le 3ème dé n'a plus de vie mais que le 3ème lancer est bon
-        print("VICTOIRE")
+       rejouer()
     if rep == "oui" :                                                                     # Seconde condition de victoire : si le 3ème dé est validé et verifié par le programme
       if d3 == d2:
         print("Victoire")
+        rejouer()
       else:
-        print("Mensonge ! GAME OVER")                                                      # Si la vérification détecte un mensonge pour le 2ème dé, c'est GAME OVER
+        print("Mensonge ! GAME OVER")                                                     # Si la vérification détecte un mensonge pour le 3ème dé, c'est GAME OVER
+        rejouer()                                                     
   elif rep == "oui" and d1 != d2:
-    print("Mensonge ! GAME OVER")                                                          # Si la vérification détacte un mensonge pour le 3ème dé, c'est GAME OVER
+    print("Mensonge ! GAME OVER")                                                         # Si la vérification détecte un mensonge pour le 2ème dé, c'est GAME OVER
+    rejouer()                                                         
 
 
 print("Bienvenue sur ce jeu de lancer de dé.")                                             # Petite introduction du jeu histoire d'expliquer les règles et de simuler un bouton start
