@@ -10,7 +10,7 @@ def rejouer():                                                                  
   if rej == "oui":
     jeu()
   elif rej == "non":
-    print("A plus tard !")                                                                # Cette valeur sera stockée dans la variable "a", qu'on réassignera à chaque lancer validé
+    print("Merci d'avoir joué ! A plus tard !")                                                                # Cette valeur sera stockée dans la variable "a", qu'on réassignera à chaque lancer validé
 
 def jeu():                                                                                # On crée la fonction jeu qui sera sera notre fonction finale
   d1 = desix()                                                                            # 1er lancer de dé, il est automatiquement validé
